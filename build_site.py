@@ -6,12 +6,12 @@ Run after weekly_extreme_report.py, from the same folder:
     python3 build_site.py --week-ending 2026-09-25
 
 What it does:
-  1. copies extreme_returns_report.html  ->  site/reports/<week-ending>.html
+  1. copies extreme_returns_report.html  ->  docs/reports/<week-ending>.html
      (and adds an "All reports" link at the top of the report)
-  2. records the week and its flagged tickers in site/reports.json
-  3. regenerates site/index.html with links to every week, newest first
+  2. records the week and its flagged tickers in docs/reports.json
+  3. regenerates docs/index.html with links to every week, newest first
 
-Then upload the whole site/ folder to your host (GitHub Pages, Cloudflare Pages, Netlify...).
+Then commit/upload the docs/ folder; GitHub Pages publishes it when set to serve from /docs.
 """
 import argparse
 import html
@@ -25,10 +25,10 @@ import pandas as pd
 REPORT_HTML = Path("extreme_returns_report.html")
 CARD_PNG = Path("extreme_returns_chart.png")
 NEWS_CSV = Path("extreme_news_last_week.csv")
-SITE = Path("docs")
+SITE = Path("docs")   # GitHub Pages: Settings > Pages > branch main, folder /docs
 
 # Your site's public address, no trailing slash. Social previews need full URLs.
-SITE_URL = "https://basart85.github.io/ai-extreme-returns"
+SITE_URL = "https://<your-username>.github.io/ai-extreme-returns"
 SITE_TITLE = "AI Stocks: Weekly Extreme Returns"
 SITE_INTRO = ("Each week, the largest AI companies' daily returns are compared with the "
               "S&P 500, and days beyond a stock's own 5th or 95th return percentile are "
