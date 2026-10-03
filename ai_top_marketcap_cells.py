@@ -18,7 +18,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from matplotlib.ticker import PercentFormatter
-
+import textwrap
+import matplotlib.pyplot as plt
 
 
  
@@ -230,13 +231,27 @@ last_week = returns_1y.index[-5:]          # last 5 trading days
 
 recent_week = extremes[extremes["date"].isin(last_week)]
 
-flag_week = (recent_week.groupby("ticker")
+# flag_week = (recent_week.groupby("ticker")
+#              .agg(n_extreme_days=("date", "size"),
+#                   bottom_days=("tail", lambda s: (s == "bottom 5%").sum()),
+#                   top_days=("tail", lambda s: (s == "top 5%").sum()))
+#              .reindex(returns_1y.columns, fill_value=0))
+# flag_week["any_extreme"] = flag_week["n_extreme_days"] > 0
+# flag_week
+
+
+flag_week = (recent_week
+             .assign(bottom=recent_week["tail"].eq("bottom 5%"),
+                     top=recent_week["tail"].eq("top 5%"))
+             .groupby("ticker")
              .agg(n_extreme_days=("date", "size"),
-                  bottom_days=("tail", lambda s: (s == "bottom 5%").sum()),
-                  top_days=("tail", lambda s: (s == "top 5%").sum()))
+                  bottom_days=("bottom", "sum"),
+                  top_days=("top", "sum"))
              .reindex(returns_1y.columns, fill_value=0))
 flag_week["any_extreme"] = flag_week["n_extreme_days"] > 0
 flag_week
+
+
 # %%
 
 # %%
@@ -318,4 +333,14 @@ extreme_news_week
 
 # %% 
 extreme_news_week.to_csv("extreme_news_last_week.csv", index=False, encoding="utf-8-sig")
+# %%
+text = ", ".join(map(str, universe))
+wrapped = textwrap.fill(text, width=60)   # max ~60 characters per line
+
+fig, ax = plt.subplots(figsize=(8, 0.4 * wrapped.count("\n") + 0.8))
+ax.axis("off")
+ax.text(0, 1, wrapped, va="top", ha="left", fontsize=12,
+        transform=ax.transAxes)
+fig.savefig("list.png", dpi=200, bbox_inches="tight")
+plt.close(fig)
 # %%
