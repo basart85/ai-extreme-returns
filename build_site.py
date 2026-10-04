@@ -28,7 +28,7 @@ NEWS_CSV = Path("extreme_news_last_week.csv")
 SITE = Path("docs")   # GitHub Pages: Settings > Pages > branch main, folder /docs
 
 # Your site's public address, no trailing slash. Social previews need full URLs.
-SITE_URL = "https://<your-username>.github.io/ai-extreme-returns"
+SITE_URL = "https://basart85.github.io/ai-extreme-returns"
 SITE_TITLE = "AI Stocks: Weekly Extreme Returns"
 SITE_INTRO = ("Each week, the largest AI companies' daily returns are compared with the "
               "S&P 500, and days beyond a stock's own 5th or 95th return percentile are "

@@ -1,5 +1,13 @@
 [
   {
+    "week_ending": "2026-10-02",
+    "flagged": [
+      "META",
+      "TSLA"
+    ],
+    "file": "reports/2026-10-02.html"
+  },
+  {
     "week_ending": "2026-09-25",
     "flagged": [
       "GOOGL",
