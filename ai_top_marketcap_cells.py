@@ -89,10 +89,11 @@ caps = market_caps(universe)
 caps.sort_values("market_cap", ascending=False)
 
 # %% Step 3: top N (re-run with a different N without re-downloading)
-N = 5
+N = 10
 top = caps.sort_values("market_cap", ascending=False).head(N).copy()
 top["market_cap_$bn"] = (top["market_cap"] / 1e9).round(1)
 top[["ticker", "price", "market_cap_$bn"]].reset_index(drop=True)
+top_5 = top['ticker'].tolist()
 
 # %% Step 4 (optional): point-in-time market cap history for the top names
 hist = pd.concat([historical_market_cap(t) for t in top["ticker"]], axis=1)
@@ -320,7 +321,8 @@ extreme_news = days.merge(headlines, on=["ticker", "date"], how="left")
 extreme_news["n_articles"] = extreme_news["n_articles"].fillna(0).astype(int)
 extreme_news["headlines"] = extreme_news["headlines"].fillna("")
 extreme_news
-# %%
+
+
 # %% Step 14: save to CSV
 extreme_news.to_csv("extreme_news.csv", index=False, encoding="utf-8-sig")
 
@@ -334,7 +336,7 @@ extreme_news_week
 # %% 
 extreme_news_week.to_csv("extreme_news_last_week.csv", index=False, encoding="utf-8-sig")
 # %%
-text = ", ".join(map(str, universe))
+text = ", ".join(map(str, top_5))
 wrapped = textwrap.fill(text, width=60)   # max ~60 characters per line
 
 fig, ax = plt.subplots(figsize=(8, 0.4 * wrapped.count("\n") + 0.8))
