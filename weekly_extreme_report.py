@@ -35,7 +35,7 @@ except ImportError:          # links fall back to Google News redirects
 NEWS_CSV = "extreme_news_last_week.csv"
 ARTICLES_CSV = "extreme_news_articles.csv"
 OUT_HTML = "extreme_returns_report.html"
-CARD_PNG = "extreme_returns_chart.png"   # 1200x630 preview image for X / LinkedIn / WhatsApp
+CARD_PNG = "output/extreme_returns_chart.png"   # 1200x630 preview image for X / LinkedIn / WhatsApp
 URL_CACHE = Path("resolved_urls.json")   # remembers decoded links so re-runs are fast
 
 # Assets to plot. None = only the assets that had an extreme day last week.

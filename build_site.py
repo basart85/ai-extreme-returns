@@ -23,7 +23,7 @@ from pathlib import Path
 import pandas as pd
 
 REPORT_HTML = Path("extreme_returns_report.html")
-CARD_PNG = Path("extreme_returns_chart.png")
+CARD_PNG = Path("output/extreme_returns_chart.png")
 NEWS_CSV = Path("extreme_news_last_week.csv")
 SITE = Path("docs")   # GitHub Pages: Settings > Pages > branch main, folder /docs
 

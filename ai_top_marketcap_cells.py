@@ -343,6 +343,6 @@ fig, ax = plt.subplots(figsize=(8, 0.4 * wrapped.count("\n") + 0.8))
 ax.axis("off")
 ax.text(0, 1, wrapped, va="top", ha="left", fontsize=12,
         transform=ax.transAxes)
-fig.savefig("list.png", dpi=200, bbox_inches="tight")
+fig.savefig("output/list.png", dpi=200, bbox_inches="tight")
 plt.close(fig)
 # %%
