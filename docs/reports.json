@@ -1,5 +1,13 @@
 [
   {
+    "week_ending": "2026-10-16",
+    "flagged": [
+      "AVGO",
+      "META"
+    ],
+    "file": "reports/2026-10-16.html"
+  },
+  {
     "week_ending": "2026-10-02",
     "flagged": [
       "META",
