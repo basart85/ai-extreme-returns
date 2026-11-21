@@ -1,5 +1,18 @@
 [
   {
+    "week_ending": "2026-11-20",
+    "flagged": [
+      "AMZN",
+      "AVGO",
+      "GOOGL",
+      "META",
+      "NVDA",
+      "TSLA",
+      "TSM"
+    ],
+    "file": "reports/2026-11-20.html"
+  },
+  {
     "week_ending": "2026-11-13",
     "flagged": [
       "AVGO",
